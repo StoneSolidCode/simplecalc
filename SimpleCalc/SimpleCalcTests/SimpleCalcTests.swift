@@ -11,9 +11,25 @@ import XCTest
 class ExtendedCalcTests :XCTestCase {
     let calc = Calculator()
     
-    //func testNegativeOps() {
-    //    XCTAssert(calc.calculate(["2", "+", "-12"]) == -10)
-    //}
+    func testNegativeOps() {
+        XCTAssert(calc.calculate(["2", "+", "-12"]) == -10)
+        XCTAssert(calc.calculate(["-1", "2", "-3", "count"]) == 3)
+        XCTAssert(calc.calculate(["2", "-2", "4", "-9", "5", "avg"]) == 0)
+        XCTAssert(calc.calculate(["2", "-2", "4", "-1", "12", "avg"]) == 3)
+        XCTAssert(calc.calculate(["2", "-2", "-4", "1", "-12", "avg"]) == -3)
+        XCTAssert(calc.calculate(["-2", "fact"]) == 0)
+        XCTAssert(calc.calculate(["-5", "fact"]) == 0)
+    }
+    
+    func testFloatingOps() {
+        XCTAssert(calc.calculate(["2.2", "+", "-12.2"]) == -10)
+        XCTAssert(calc.calculate(["1.1", "2", "3.5", "count"]) == 3)
+        XCTAssert(calc.calculate(["2", "-2.0", "4", "-9", "5.9", "avg"]) == 0)
+        XCTAssert(calc.calculate(["2", "-2.2", "4", "-1", "12.8", "avg"]) == 3)
+        XCTAssert(calc.calculate(["2.2", "-2", "-4", "1", "-12.8", "avg"]) == -3)
+        XCTAssert(calc.calculate(["2.5", "fact"]) == 0)
+        XCTAssert(calc.calculate(["5.2", "fact"]) == 0)
+    }
 }
 
 class SimpleCalcTests: XCTestCase {
